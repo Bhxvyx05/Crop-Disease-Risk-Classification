@@ -1,0 +1,68 @@
+# Crop Disease Risk Classification - Project Configuration
+
+project:
+  name: "Crop Disease Risk Classification"
+  version: "1.0.0"
+  author: "Antigravity Senior AI/ML Engineer"
+  description: "Supervised ML prototype for classifying crop disease risk based on environmental & crop indicators"
+
+paths:
+  raw_data: "data/raw/crop_disease_risk.csv"
+  train_data: "data/processed/train.csv"
+  test_data: "data/processed/test.csv"
+  model_pipeline: "artifacts/model_pipeline.joblib"
+  model_metadata: "artifacts/model_metadata.json"
+  metrics_report: "reports/metrics.json"
+  figures_dir: "reports/figures/"
+
+dataset:
+  target_col: "disease_risk"
+  target_classes: ["Low", "Moderate", "High"]
+  test_size: 0.2
+  random_state: 42
+
+features:
+  numeric:
+    temperature_c:
+      min: 10.0
+      max: 45.0
+      unit: "°C"
+      description: "Air Temperature"
+    humidity_pct:
+      min: 20.0
+      max: 100.0
+      unit: "%"
+      description: "Relative Air Humidity"
+    soil_moisture_pct:
+      min: 5.0
+      max: 90.0
+      unit: "%"
+      description: "Volumetric Soil Moisture"
+    rainfall_mm:
+      min: 0.0
+      max: 200.0
+      unit: "mm"
+      description: "Recent Precipitation / Rainfall"
+    leaf_wetness_hours:
+      min: 0.0
+      max: 24.0
+      unit: "hours/day"
+      description: "Duration of Leaf Wetness"
+  
+  categorical:
+    crop_type:
+      categories: ["Wheat", "Rice", "Maize", "Tomato", "Potato"]
+      description: "Cultivated Crop Type"
+    growth_stage:
+      categories: ["Seedling", "Vegetative", "Flowering", "Maturity"]
+      description: "Crop Physiological Growth Stage"
+
+modeling:
+  cv_folds: 5
+  primary_metric: "macro_f1"
+  models_to_compare:
+    - "Dummy"
+    - "LogisticRegression"
+    - "KNN"
+    - "DecisionTree"
+    - "RandomForest"

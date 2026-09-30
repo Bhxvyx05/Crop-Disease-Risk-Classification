@@ -1,0 +1,109 @@
+{
+  "project_name": "Crop Disease Risk Classification",
+  "version": "1.0.0",
+  "model_name": "RandomForest",
+  "target_col": "disease_risk",
+  "target_classes": [
+    "Low",
+    "Moderate",
+    "High"
+  ],
+  "numeric_features": [
+    "temperature_c",
+    "humidity_pct",
+    "soil_moisture_pct",
+    "rainfall_mm",
+    "leaf_wetness_hours"
+  ],
+  "categorical_features": [
+    "crop_type",
+    "growth_stage"
+  ],
+  "train_samples": 960,
+  "test_samples": 240,
+  "random_state": 42,
+  "cv_results": [
+    {
+      "Model": "RandomForest",
+      "CV_Macro_F1_Mean": 0.7303,
+      "CV_Macro_F1_Std": 0.0297,
+      "Best_Parameters": "{'classifier__max_depth': 8, 'classifier__n_estimators': 50}"
+    },
+    {
+      "Model": "DecisionTree",
+      "CV_Macro_F1_Mean": 0.7179,
+      "CV_Macro_F1_Std": 0.019,
+      "Best_Parameters": "{'classifier__max_depth': 5, 'classifier__min_samples_split': 5}"
+    },
+    {
+      "Model": "LogisticRegression",
+      "CV_Macro_F1_Mean": 0.7042,
+      "CV_Macro_F1_Std": 0.0395,
+      "Best_Parameters": "{'classifier__C': 0.1, 'classifier__solver': 'lbfgs'}"
+    },
+    {
+      "Model": "KNN",
+      "CV_Macro_F1_Mean": 0.6807,
+      "CV_Macro_F1_Std": 0.0321,
+      "Best_Parameters": "{'classifier__n_neighbors': 9, 'classifier__weights': 'distance'}"
+    },
+    {
+      "Model": "Dummy",
+      "CV_Macro_F1_Mean": 0.1728,
+      "CV_Macro_F1_Std": 0.0008,
+      "Best_Parameters": "Default"
+    }
+  ],
+  "best_cv_macro_f1": 0.7303,
+  "best_parameters": "{'classifier__max_depth': 8, 'classifier__n_estimators': 50}",
+  "test_metrics": {
+    "accuracy": 0.7083,
+    "balanced_accuracy": 0.7057,
+    "macro_precision": 0.7017,
+    "macro_recall": 0.7057,
+    "macro_f1": 0.7034,
+    "weighted_f1": 0.7056,
+    "per_class": {
+      "Low": {
+        "precision": 0.8068,
+        "recall": 0.8452,
+        "f1_score": 0.8256,
+        "support": 84
+      },
+      "Moderate": {
+        "precision": 0.5676,
+        "recall": 0.5316,
+        "f1_score": 0.549,
+        "support": 79
+      },
+      "High": {
+        "precision": 0.7308,
+        "recall": 0.7403,
+        "f1_score": 0.7355,
+        "support": 77
+      }
+    },
+    "confusion_matrix": [
+      [
+        71,
+        12,
+        1
+      ],
+      [
+        17,
+        42,
+        20
+      ],
+      [
+        0,
+        20,
+        57
+      ]
+    ],
+    "target_classes": [
+      "Low",
+      "Moderate",
+      "High"
+    ]
+  }
+}
