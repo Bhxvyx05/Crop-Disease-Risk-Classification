@@ -169,8 +169,3 @@ The application shell consists of 5 complete pages:
 4. **Model Insights:** Cross-validation model comparison tables, test set confusion matrix, per-class performance bar chart, and global Gini feature importances.
 5. **About Project:** Academic methodology, pipeline architecture diagram, tech stack details, limitations, and literature references.
 
----
-
-## 7. Educational & Responsible Use Disclaimer
-
-> **IMPORTANT:** This application is built as an academic capstone prototype. The predicted risk categories reflect statistical associations in dataset observations and do NOT provide a certified phytopathological laboratory diagnosis or chemical pesticide recommendation. Field decisions should always involve qualified agricultural extension services.
